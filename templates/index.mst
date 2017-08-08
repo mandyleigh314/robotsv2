@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Robot Directory</title>
+      <link rel="stylesheet" href="/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Robot Directory</h1>
+    <ul>
+      {{#robots}}
+    <li>
+      <img src={{avatar}}>
+      <a href="/info/{{id}}">{{name}}</a>
+      {{#job}}
+      <p>{{job}},
+      {{/job}}
+      {{^job}}
+      <span>Available for hire</span>
+      {{/job}}
+      {{company}}</p>
+      {{/robots}}
+    </li>
+  </body>
+</html>
