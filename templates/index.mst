@@ -8,6 +8,9 @@
   </head>
   <body>
     <h1>Robot Directory</h1>
+    <form action="/add" method="get">
+      <input type="submit" name="add" value="Add a Robot">
+    </form>
     <ul>
       {{#robots}}
     <li>

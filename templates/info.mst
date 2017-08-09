@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Info</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body>
+    <div id='top'>
+    <img src={{avatar}} class='avatar'>
+    <div id='header'>
+      <h1>{{name}}</h1>
+      <p>{{#city}}
+        {{city}},
+        {{/city}}
+        {{country}} |
+        {{#job}}
+        {{job}},
+        {{/job}}
+        {{^job}}
+        <span>Available for hire</span>
+        {{/job}}
+        {{company}}</p>
+        <br>
+        <p>{{email}} | {{phone}}</p>
+    </div>
+  </div>
+    <div id='education'>
+      {{#university}}
+      <p><strong>Education</strong></p><p>{{university}}</p>
+      {{/university}}
+    </div>
+    <form action="/info/edit/{{id}}" method="get">
+      <input type="submit" name="edit" value="Edit this Robot">
+    </form>
+    <form action="/info/delete/{{id}}" method="post">
+      <input type="submit" name="delete" value="Delete this Robot">
+    </form>
+  </body>
+</html>
