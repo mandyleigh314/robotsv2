@@ -15,16 +15,19 @@ app.set('view engine', 'mst')
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  database.any(`SELECT * FROM "robots"`).then(robots => {
+  database.any(`SELECT * FROM "robots" ORDER BY name`).then(robots => {
     res.render('index', { robots: robots })
   })
 })
 
 app.get('/info/:id', (req, res) => {
   const roboId = req.params.id
-  const getOneRobo = database.one(`SELECT * FROM "robots" WHERE id = $(id)`, { id: roboId }).then(getOneRobo => {
-    res.render('info', getOneRobo)
-  })
+  const getOneRobo = database
+    .one(`SELECT * FROM "robots" WHERE id = $(id)`, { id: roboId })
+    .then(getOneRobo => {
+      res.render('info', getOneRobo)
+    })
+    .catch(error => res.render('error'))
 })
 
 app.get('/info/edit/:id', (req, res) => {
